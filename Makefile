@@ -5,41 +5,42 @@
 #                                                     +:+ +:+         +:+      #
 #    By: psaengha <psaengha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/17 23:59:58 by psaengha          #+#    #+#              #
-#    Updated: 2023/06/17 23:59:58 by psaengha         ###   ########.fr        #
+#    Created: 2023/08/23 11:11:25 by psaengha          #+#    #+#              #
+#    Updated: 2023/08/23 11:11:25 by psaengha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-CC = gcc
+SRC =	push_swap.c \
+		check_error.c
+OBJ = $(SRC:%.c=%.o)
+LIBFT = Libft/libft.a
 
-FLAGS = -Wall -Werror -Wextra -g
+INCS_DIR = ./includes
+IFLAGS = -I $(INCS_DIR)
+#LEAK = -fsanitize=address
+GCC_FLAGS = gcc -Wall -Wextra -Werror -g -Iinclude
+# GCC_FLAGS = gcc -Wall -Wextra -Werror -g -Iinclude $(LEAK)
 
-SRCS = push_swap.c \
-		ft_atoi.c \
-		ft_split.c \
-		instruction.c \
-		radix_sort.c \
-		stack.c
+all: $(NAME)
 
-OBJS = $(SRCS:.c=.o)
+# %.o: %.c
+# 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
-%.o:%.c
-	$(CC) $(FLAGS) -c $< -o $@
+$(NAME) : $(OBJ)
+	make -C ./Libft
+	$(GCC_FLAGS) $^ $(LIBFT) -o $@
+# $(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+clean:
+	make clean -C ./Libft
+	rm -rf $(OBJ)
 
-all : run clean
+fclean : clean
+	make fclean -C ./Libft
+	rm -rf $(NAME)
 
-#compile :
-#	$(CC) $(FLAGS) $(SRC) -o push_swap
+re: fclean all
 
-run :
-	./push_swap $(ARG)
-
-clean :
-	rm -rf push_swap
-
-re : run clean
+.PHONY: all clean fclean re

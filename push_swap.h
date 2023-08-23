@@ -13,26 +13,19 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+# include "Libft/libft.h"
 # include <limits.h>
+# include <stdio.h>
 // for stuff like INT_MAX and etc.
 
-typedef struct s_stack_linked_list {
+typedef struct s_stack {
     int                         value;
     int                         index;
     struct s_stack_linked_list  *prev;
     struct s_stack_linked_list  *next;
 }   t_stack;
 
-void    push(t_stack **head, int value, int index);
-char	**ft_split(char const *s, char c);
-int     ft_atoi(const char *str);
-void	swap(t_stack **st);
-void	rotate(t_stack **st);
-void	reindex(t_stack **st);
-void	popto(t_stack **src, t_stack **dest);
-int     countmaxdigit(t_stack **st);
-void    radix_sort();
+void    check_emptyString(int ac, char **av);
+void    check_nonNumeric(int ac, char **av);
 
 #endif
