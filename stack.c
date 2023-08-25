@@ -3,37 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaengha <psaengha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaengha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 23:59:41 by psaengha          #+#    #+#             */
-/*   Updated: 2023/06/17 23:59:41 by psaengha         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:50:47 by psaengha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    push(t_stack **head, int value, int index)
+void	push(t_stack **head, int value, int index)
 {
-    t_stack *newNode;
-    t_stack *ptr;
+	t_stack	*newnode;
+	t_stack	*ptr;
 
-    newNode = (t_stack *)malloc(sizeof(t_stack));
-    if (!newNode)
-        return;
-    newNode->value = value;
-    newNode->index = index;
-    newNode->prev = NULL;
-    newNode->next = NULL;
-    if (*head == NULL)
-        *head = newNode;
-    else
-    {
-        ptr = *head;
-        while (ptr->next != NULL)
-            ptr = ptr->next;
-        ptr->next = newNode;
-        newNode->prev = ptr;
-    }
+	newnode = (t_stack *)malloc(sizeof(t_stack));
+	if (!newnode)
+		return ;
+	newnode->value = value;
+	newnode->index = index;
+	newnode->prev = NULL;
+	newnode->next = NULL;
+	if (*head == NULL)
+		*head = newnode;
+	else
+	{
+		ptr = *head;
+		while (ptr->next != NULL)
+			ptr = ptr->next;
+		ptr->next = newnode;
+		newnode->prev = ptr;
+	}
 }
 
 void	reindex(t_stack **st)
