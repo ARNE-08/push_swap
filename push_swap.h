@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaengha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psaengha <psaengha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 23:59:49 by psaengha          #+#    #+#             */
-/*   Updated: 2023/08/25 13:02:28 by psaengha         ###   ########.fr       */
+/*   Updated: 2023/08/29 22:00:05 by psaengha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,22 @@ int		havespace(char *str);
 void	check_sorted(t_stack *a);
 void	check_allerrors(int ac, char **av);
 int		digitlen(char *str);
+void	sa(t_stack **st);
+void	sb(t_stack **st);
+int		countnode(t_stack *st);
+void	gotohead(t_stack **st);
+void	gototail(t_stack **st);
+void	ra(t_stack **st);
+void	rb(t_stack **st);
+int		find_biggest(t_stack *st);
+void 	rra(t_stack **head);
+void    sort_3(t_stack **a);
+void	printall(t_stack *a);
+int		find_smallest(t_stack *st);
+void	poptostack(t_stack **A, t_stack **B, int mode);
+void	popto(t_stack **src, t_stack **dest);
+void	sort_5(t_stack **a, t_stack **b);
+void	reindex(t_stack **st);
+void    pa(t_stack **a, t_stack **b);
 
 #endif

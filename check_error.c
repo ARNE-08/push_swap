@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaengha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psaengha <psaengha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:30:23 by psaengha          #+#    #+#             */
-/*   Updated: 2023/08/25 13:05:39 by psaengha         ###   ########.fr       */
+/*   Updated: 2023/08/28 21:53:15 by psaengha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	check_emptystring(int ac, char **av)
 		}
 		if (num == 0)
 		{
-			ft_printf("Error1\n");
+			ft_printf("Error\n");
 			exit(0);
 		}
 		i++;

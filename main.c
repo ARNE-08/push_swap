@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaengha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: psaengha <psaengha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 23:49:10 by psaengha          #+#    #+#             */
-/*   Updated: 2023/08/25 13:05:35 by psaengha         ###   ########.fr       */
+/*   Updated: 2023/08/29 22:25:21 by psaengha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,19 @@
 //	}
 //}
 
-//void	poptostack(t_stack **A, t_stack **B, int mode)
-//{
-//	if (mode == 0)
-//	{
-//		popto(B, A);
-//		reindex(A);
-//	}
-//	else
-//	{
-//		popto(A, B);
-//		reindex(B);
-//	}
-//}
+void	poptostack(t_stack **A, t_stack **B, int mode)
+{
+	if (mode == 0)
+	{
+		popto(B, A);
+		reindex(A);
+	}
+	else
+	{
+		popto(A, B);
+		reindex(B);
+	}
+}
 
 void	printall(t_stack *a)
 {
@@ -56,7 +56,7 @@ void	printall(t_stack *a)
 	ptr = a;
 	while (ptr)
 	{
-		printf("%d\n", ptr->value);
+		printf("#%d %d\n", ptr->index, ptr->value);
 		ptr = ptr->next;
 	}
 }
@@ -65,7 +65,9 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
+	int		sort;
 
+	// ! 3 ac with "56 7 9654 2 4 5" should work
 	if (ac < 2)
 		exit(0);
 	check_allerrors(ac, av);
@@ -73,5 +75,17 @@ int	main(int ac, char **av)
 	check_duplicate(a);
 	check_sorted(a);
 	clear_stack(&a);
-	ft_printf("Yeah\n");
+	push_check(&a, ac, av);
+	reindex(&a);
+	printall(a);
+	if (countnode(a) == 2)
+		sa(&a);
+	else if (countnode(a) == 3)
+		sort_3(&a);
+	else if (countnode(a) == 5)
+		sort_5(&a, &b);
+	else
+		ft_printf("Yeah");
+	printf("sorted-> ");
+	printall(a);
 }
