@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_duplicate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaengha <psaengha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaengha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 22:11:16 by psaengha          #+#    #+#             */
-/*   Updated: 2023/08/28 18:36:02 by psaengha         ###   ########.fr       */
+/*   Updated: 2023/09/02 14:35:46 by psaengha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	push_check(t_stack **a, int ac, char **av)
 				push(a, ft_atoi(temp1[j]), index);
 				j++;
 			}
+			doublefree(temp1);
 		}
 		else
 			push(a, ft_atoi(av[i]), index);
@@ -77,7 +78,7 @@ void	check_duplicate(t_stack *a)
 		{
 			if (ptr->value == run->value)
 			{
-				ft_printf("Error\n");
+				ft_putendl_fd("Error", 2);
 				exit(0);
 			}
 			run = run->next;
@@ -86,7 +87,6 @@ void	check_duplicate(t_stack *a)
 	}
 }
 
-// ! function to clear all stack
 void	clear_stack(t_stack **stack)
 {
 	t_stack	*temp;
@@ -96,5 +96,6 @@ void	clear_stack(t_stack **stack)
 		temp = *stack;
 		*stack = (*stack)->next;
 		free(temp);
+		temp = NULL;
 	}
 }

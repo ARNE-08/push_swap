@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaengha <psaengha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaengha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 23:59:41 by psaengha          #+#    #+#             */
-/*   Updated: 2023/08/29 21:13:07 by psaengha         ###   ########.fr       */
+/*   Updated: 2023/09/02 14:37:49 by psaengha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	reindex(t_stack **st)
 	t_stack	*ptr;
 	int		newindex;
 
+	gotohead(st);
 	ptr = *st;
 	newindex = 0;
 	while (ptr != NULL)
@@ -25,21 +26,6 @@ void	reindex(t_stack **st)
 		newindex++;
 		ptr = ptr->next;
 	}
-}
-
-int	countnode(t_stack *st)
-{
-	int		i;
-	t_stack	*ptr;
-
-	i = 0;
-	ptr = st;
-	while (ptr)
-	{
-		i++;
-		ptr = ptr->next;
-	}
-	return (i);
 }
 
 void	gotohead(t_stack **st)

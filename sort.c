@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaengha <psaengha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaengha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 21:26:02 by psaengha          #+#    #+#             */
-/*   Updated: 2023/08/29 22:28:41 by psaengha         ###   ########.fr       */
+/*   Updated: 2023/09/02 00:59:02 by psaengha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,49 +27,98 @@ int	isnotsorted(t_stack *a)
 	}
 	if (check == 0)
 		return (0);
-    return (1);
+	return (1);
 }
 
-void    sort_3(t_stack **a)
+void	sort_3(t_stack **a)
 {
-    int biggest;
-    int sort;
+	int	biggest;
+	int	sort;
 
-    biggest = find_biggest(*a);
-    if ((*a)->value == biggest)
-        ra(a);
-    else if ((*a)->next->value == biggest)
-        rra(a);
-    if (isnotsorted(*a))
-        sa(a);
+	biggest = find_biggest(*a);
+	if ((*a)->value == biggest)
+		ra(a);
+	else if ((*a)->next->value == biggest)
+		rra(a);
+	if (isnotsorted(*a))
+		sa(a);
+}
+
+void	pass_to_b(t_stack **a, t_stack **b, int smallest, int index)
+{
+	int	mid;
+
+	mid = countnode(*a) / 2;
+	reindex(a);
+	if (index <= mid)
+	{
+		gotohead(a);
+		while ((*a)->value != smallest)
+		{
+			gotohead(a);
+			ra(a);
+		}
+	}
+	else
+	{
+		gotohead(a);
+		while ((*a)->value != smallest)
+		{
+			rra(a);
+			gotohead(a);
+		}
+	}
+}
+
+void	sort_5sub(t_stack **a, t_stack **b, int smallest)
+{
+	while ((*a)->next)
+	{
+		if (smallest == (*a)->value)
+		{
+			if ((*a)->prev != NULL)
+			{
+				pass_to_b(a, b, smallest, (*a)->index);
+				pb(b, a);
+			}
+			else
+				pb(b, a);
+		}
+		(*a) = (*a)->next;
+	}
+	if (smallest == (*a)->value)
+	{
+		pass_to_b(a, b, smallest, (*a)->index);
+		pb(b, a);
+	}
+	gotohead(a);
+	reindex(a);
 }
 
 void	sort_5(t_stack **a, t_stack **b)
 {
 	int		smallest;
 	int		i;
+	int		max;
 
 	smallest = find_smallest(*a);
 	i = 0;
-	while (i < 2)
+	if (countnode(*a) < 5)
+		max = 1;
+	else
+		max = 2;
+	while (i < max)
 	{
-		while ((*a)->next)
-		{
-			if (smallest == (*a)->value)
-				poptostack(a, b, 1);
-			(*a) = (*a)->next;
-		}
-		if (smallest == (*a)->value)
-			poptostack(a, b, 1);
-		gotohead(a);
-		reindex(a);
+		sort_5sub(a, b, smallest);
 		smallest = find_smallest(*a);
 		i++;
 	}
 	sort_3(a);
-	*b = (*b)->next;
 	pa(a, b);
-	gotohead(b);
-	reindex(b);
-	pa(a, b);
+	if (max == 2)
+	{
+		gotohead(b);
+		reindex(b);
+		pa(a, b);
+	}
 }

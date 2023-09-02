@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_nonlimit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaengha <psaengha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaengha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 11:52:03 by psaengha          #+#    #+#             */
-/*   Updated: 2023/08/28 21:05:53 by psaengha         ###   ########.fr       */
+/*   Updated: 2023/09/02 03:29:19 by psaengha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@ void	check_innernnonnumeric(char *str)
 				i++;
 			if (temp1[j][i] < '0' || temp1[j][i] > '9')
 			{
-				ft_printf("Error\n");
+				ft_putendl_fd("Error", 2);
 				exit(0);
 			}
 			i++;
 		}
 		j++;
 	}
+	doublefree(temp1);
 }
 
 void	check_nonnumeric(int ac, char **av)
@@ -57,7 +58,7 @@ void	check_nonnumeric(int ac, char **av)
 					j++;
 				if (av[i][j] < '0' || av[i][j] > '9')
 				{
-					ft_printf("Error\n");
+					ft_putendl_fd("Error", 2);
 					exit(0);
 				}
 				j++;
@@ -96,11 +97,12 @@ void	check_innerlimit(char *str)
 		if (digitlen(temp[j]) > 10
 			|| ft_atoi(temp[j]) > INT_MAX || ft_atoi(temp[j]) < INT_MIN)
 		{
-			ft_printf("Error\n");
+			ft_putendl_fd("Error", 2);
 			exit(0);
 		}
 		j++;
 	}
+	doublefree(temp);
 }
 
 void	check_limit(int ac, char **av)
@@ -117,7 +119,7 @@ void	check_limit(int ac, char **av)
 			if (digitlen(av[i]) > 10
 				|| ft_atoi(av[i]) > INT_MAX || ft_atoi(av[i]) < INT_MIN)
 			{
-				ft_printf("Error\n");
+				ft_putendl_fd("Error", 2);
 				exit(0);
 			}
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instruction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaengha <psaengha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaengha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 15:04:28 by psaengha          #+#    #+#             */
-/*   Updated: 2023/08/28 21:22:34 by psaengha         ###   ########.fr       */
+/*   Updated: 2023/09/02 14:36:20 by psaengha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	ra(t_stack **st)
 		head->next = NULL;
 		head->prev = ptr;
 		*st = newhead;
-		reindex(st);
 	}
+	(*st)->prev = NULL;
 	ft_printf("ra\n");
 }
 

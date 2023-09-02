@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: psaengha <psaengha@student.42.fr>          +#+  +:+       +#+         #
+#    By: psaengha <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 11:11:25 by psaengha          #+#    #+#              #
-#    Updated: 2023/08/28 21:56:17 by psaengha         ###   ########.fr        #
+#    Updated: 2023/09/01 15:53:21 by psaengha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC =	main.c \
 		instruction.c \
 		instruction_rr.c \
 		push_pop.c \
-		sort.c
+		sort.c \
+		radix_sort.c
 OBJ = $(SRC:%.c=%.o)
 LIBFT = utils/libft/libft.a
 PRINTF = utils/ft_printf/libftprintf.a

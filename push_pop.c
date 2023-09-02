@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_pop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaengha <psaengha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaengha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 21:28:00 by psaengha          #+#    #+#             */
-/*   Updated: 2023/08/29 22:24:09 by psaengha         ###   ########.fr       */
+/*   Updated: 2023/09/02 14:37:05 by psaengha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	push(t_stack **head, int value, int index)
 
 void	popto(t_stack **src, t_stack **dest)
 {
+	t_stack	*tmp;
+
 	push(dest, (*src)->value, (*src)->index);
 	if ((*src)->prev != NULL)
 	{
@@ -49,8 +51,12 @@ void	popto(t_stack **src, t_stack **dest)
 	{
 		if ((*src)->next != NULL)
 		{
+			tmp = *src;
 			*src = (*src)->next;
+			free(tmp);
 			(*src)->prev = NULL;
 		}
+		else
+			clear_stack(src);
 	}
 }

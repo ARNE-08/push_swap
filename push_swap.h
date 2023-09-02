@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psaengha <psaengha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psaengha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 23:59:49 by psaengha          #+#    #+#             */
-/*   Updated: 2023/08/29 22:00:05 by psaengha         ###   ########.fr       */
+/*   Updated: 2023/09/02 14:37:12 by psaengha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	push_check(t_stack **a, int ac, char **av);
 void	push(t_stack **head, int value, int index);
 void	clear_stack(t_stack **stack);
 int		havespace(char *str);
-// void	check_zero(int ac, char **av);
 void	check_sorted(t_stack *a);
 void	check_allerrors(int ac, char **av);
 int		digitlen(char *str);
@@ -46,14 +45,20 @@ void	gototail(t_stack **st);
 void	ra(t_stack **st);
 void	rb(t_stack **st);
 int		find_biggest(t_stack *st);
-void 	rra(t_stack **head);
-void    sort_3(t_stack **a);
+void	rra(t_stack **head);
+void	sort_3(t_stack **a);
 void	printall(t_stack *a);
 int		find_smallest(t_stack *st);
 void	poptostack(t_stack **A, t_stack **B, int mode);
 void	popto(t_stack **src, t_stack **dest);
 void	sort_5(t_stack **a, t_stack **b);
 void	reindex(t_stack **st);
-void    pa(t_stack **a, t_stack **b);
+void	pa(t_stack **a, t_stack **b);
+void	radix_sort(t_stack **a, t_stack **b);
+int		isnotsorted(t_stack *a);
+void	pb(t_stack **a, t_stack **b);
+void	edit_index(t_stack **a);
+void	setzero(t_stack **a);
+void	doublefree(char **str);
 
 #endif
